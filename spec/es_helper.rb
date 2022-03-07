@@ -13,10 +13,12 @@ module ESHelper
     host_opts = { host: host, port: port, scheme: 'http' }
     ssl_opts = {}
 
-    if options[:ca_file]
-      ssl_opts = { ca_file: options[:ca_file], version: 'TLSv1.2', verify: false }
-      host_opts[:scheme] = 'https'
-    end
+#     if options[:ca_file]
+#       ssl_opts = { ca_file: options[:ca_file], version: 'TLSv1.2', verify: false }
+#       host_opts[:scheme] = 'https'
+#     end
+    ssl_opts = {  version: 'TLSv1.2', verify: false }
+    host_opts[:scheme] = 'https'
 
     if options[:user] && options[:password]
       host_opts[:user] = options[:user]

@@ -381,7 +381,8 @@ class LogStash::Inputs::Elasticsearch < LogStash::Inputs::Base
   end
 
   def setup_ssl
-    @ssl && @ca_file ? { :ssl  => true, :ca_file => @ca_file } : {}
+    #@ssl && @ca_file ? { :ssl  => true, :ca_file => @ca_file } : {}
+    @ssl ? { :ssl  => true, :ssl_certificate_verification => false } : {}
   end
 
   def setup_hosts
