@@ -11,16 +11,15 @@ module ESHelper
     require 'elasticsearch/transport/transport/http/faraday' # supports user/password options
     host, port = get_host_port.split(':')
     host_opts = { host: host, port: port, scheme: 'http' }
-    ssl_opts = {}
 
 #     if options[:ca_file]
 #       ssl_opts = { ca_file: options[:ca_file], version: 'TLSv1.2', verify: false }
 #       host_opts[:scheme] = 'https'
 #     end
-    ssl_opts = {  version: 'TLSv1.2', verify: false }
-    host_opts[:scheme] = 'https'
+    ssl_opts = { verify: false }
 
     if options[:user] && options[:password]
+      host_opts[:scheme] = 'https'
       host_opts[:user] = options[:user]
       host_opts[:password] = options[:password]
     end

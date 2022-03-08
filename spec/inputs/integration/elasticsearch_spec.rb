@@ -62,7 +62,7 @@ describe LogStash::Inputs::Elasticsearch do
     let(:client_options) { {  :user => user, :password => password } }
 
     #let(:config) { super().merge('user' => user, 'password' => password, 'ssl' => true, 'ca_file' => ca_file) }
-    let(:config) { super().merge('user' => user, 'password' => password, 'ssl' => true, 'ssl_certificate_verification' => false) }
+    let(:config) { super().merge('user' => user, 'password' => password, 'ssl' => true) }
 
     it_behaves_like 'an elasticsearch index plugin'
 
